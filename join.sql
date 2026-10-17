@@ -36,3 +36,12 @@ SELECT o.order_id,o.status,p.payment_status
 from orders as o 
 inner join payments as p
 on o.order_id=p.order_id
+
+--Har customer ke total orders count karo, including zero-order customers.
+
+select c.customer_id, c.first_name ,count(o.order_id) as total_orders
+from customers as c 
+left join orders as o 
+on c.customer_id= o.customer_id
+
+GROUP BY c.customer_id,c.first_name

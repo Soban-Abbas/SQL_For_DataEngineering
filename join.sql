@@ -45,3 +45,12 @@ left join orders as o
 on c.customer_id= o.customer_id
 
 GROUP BY c.customer_id,c.first_name
+
+-- Har category ki total sold quantity calculate karo.
+
+select  p.category,sum(oi.quantity) as total_sold
+from order_items as oi 
+left join products as p 
+on oi.product_id=p.product_id
+GROUP BY p.category
+ORDER BY total_sold desc

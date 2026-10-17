@@ -22,4 +22,9 @@ on c.customer_id=o.customer_id
 where o.status is NULL
 
 
+-- Har order ka order_id, order_date, customer ka first_name aur last_name show karo.
 
+select c.* , o.order_id,o.order_date
+from customers as c 
+inner join orders as o 
+on c.customer_id= o.customer_id

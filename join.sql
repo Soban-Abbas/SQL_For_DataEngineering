@@ -11,3 +11,15 @@ select c.first_name , o.order_id , o.status
 from customers as c 
 inner JOIN orders as O
 on c.customer_id = o.customer_id AND o.status='completed'
+
+
+
+--Un customers ka customer_id aur first_name nikalo jinhon ne koi order place nahi kiye
+select c.*,o.*
+from customers as c
+left JOIN orders as O
+on c.customer_id=o.customer_id 
+where o.status is NULL
+
+
+

@@ -28,3 +28,11 @@ select c.* , o.order_id,o.order_date
 from customers as c 
 inner join orders as o 
 on c.customer_id= o.customer_id
+
+
+-- order_id, order status aur payment_status show karo. Sirf un orders ko include karo jinka payment record maujood hai
+
+SELECT o.order_id,o.status,p.payment_status
+from orders as o 
+inner join payments as p
+on o.order_id=p.order_id

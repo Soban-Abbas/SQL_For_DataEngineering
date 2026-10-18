@@ -54,3 +54,14 @@ left join products as p
 on oi.product_id=p.product_id
 GROUP BY p.category
 ORDER BY total_sold desc
+
+
+-- Customer-wise total order value nikalo using order_items.quantity * order_items.unit_price mtlab customer ky total orders , total quantity purchase , and total money spend
+
+SELECT c.customer_id , c.first_name, count( DISTINCT o.order_id) as total_orders , sum(oi.quantity) as total_items_purchased , sum(oi.quantity*oi.unit_price) as total_spend
+from customers as c 
+inner join orders as o 
+on c.customer_id = o.customer_id
+inner join order_items as oi 
+on o.order_id= oi.order_id
+GROUP BY c.customer_id , c.first_name

@@ -75,3 +75,24 @@ from products as p
 left join order_items as oi 
 on p.product_id=oi.product_id
 where oi.product_id is NULL
+
+
+-- make report on payment
+
+SELECT p.* , o.*
+from payments as p 
+inner join orders as o 
+on o.order_id=p.order_id
+
+
+
+-- Har customer ke completed orders count karo aur sirf unhein show karo jinke completed orders ek se zyada hain.
+
+
+select c.customer_id,c.first_name,count(o.order_id) as total_orders_completed
+from customers as c 
+inner join orders as o 
+on c.customer_id=o.customer_id
+where o.status ='completed'
+GROUP BY c.customer_id,c.first_name
+HAVING count(o.order_id)>1

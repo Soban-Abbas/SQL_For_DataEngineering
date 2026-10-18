@@ -65,3 +65,13 @@ on c.customer_id = o.customer_id
 inner join order_items as oi 
 on o.order_id= oi.order_id
 GROUP BY c.customer_id , c.first_name
+
+
+
+
+-- Un products ko identify karo jo kisi order item mein appear nahi hote.
+select p.*
+from products as p 
+left join order_items as oi 
+on p.product_id=oi.product_id
+where oi.product_id is NULL
